@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class jadwalKereta {
+public class MGhazyHumaidi2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String[][] jadwal = new String[5][5];
