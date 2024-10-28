@@ -3,7 +3,7 @@ public class praktikum1 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int num = 1;
-        int arr[] = new int[10000];
+        int arr[] = new int[100];
         int banyakDataAwal = 0;
         int banyakDataAkhir = 0;
 

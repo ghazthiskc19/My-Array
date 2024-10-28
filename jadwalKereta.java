@@ -29,7 +29,7 @@ public class jadwalKereta {
         jadwal[4][3] = "        Ada";
         jadwal[4][4] = "       Ada";
         int input = 0;
-        int pew = 0;
+        int std = 0;
         String[] orderr = new String[100];
         int[] qty = new int[100];
         
@@ -88,20 +88,20 @@ public class jadwalKereta {
                         
                         System.out.print("Jumlah: ");
                         int jumlah = sc.nextInt();
-                        pew++;
+                        std++;
                         if (jenis.equals("-") || jumlah == 0) {
-                            pew--;
+                            std--;
                             start = i;
                             break;
                         }
                         orderr[i] = jenis;
                         qty[i] = jumlah;
                     }
-                    System.out.println(pew);
+                    System.out.println(std);
                     break;
                 case 5:
                     System.out.println("List Pesanan: ");
-                    for (int i = 0; i < pew; i++) {
+                    for (int i = 0; i < std; i++) {
                         System.out.print(orderr[i] + "\t" + qty[i] + "\n");
                     }
                     break;
