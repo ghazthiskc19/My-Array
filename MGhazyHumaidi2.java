@@ -3,17 +3,11 @@ import java.util.Scanner;
 public class MGhazyHumaidi2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[][] jadwal = {
-            {"Jenis", "Harga", "Diskon", "AC", "Colokan"},
-            {"Ekonomi", "50000", "2%", "Tidak ada", "Tidak ada"},
-            {"Bisnis", "100000", "5%", "Ada", "Tidak ada"},
-            {"Eksekutif", "200000", "7%", "Ada", "Tidak ada"},
-            {"Pariwisata", "300000", "10%", "Ada", "Ada"}
-        };
 
-        int input, std = 0, start = 0;
-        String[] orderr = new String[100];
-        int[] qty = new int[100];
+        int input, banyak = 0, start = 0;
+        String[] jenisPesanan = new String[100];
+        int[] jlm = new int[100];
+        int[] harga = new int[100];
 
         do {
             System.out.println("\nMenu:");
@@ -28,54 +22,67 @@ public class MGhazyHumaidi2 {
 
             switch (input) {
                 case 1 -> {
-                    for (String[] row : jadwal) {
-                        for (String cell : row) {
-                            System.out.print(cell + "\t");
-                        }
-                        System.out.println();
-                    }
+                    System.out.println("-----------------------------------------------------------------------");
+                    System.out.printf("| %-12s| %-12s| %-12s| %-12s| %-12s|\n", "Jenis", "Harga", "Diskon", "AC", "Colokan");
+                    System.out.println("-----------------------------------------------------------------------");
+                    System.out.printf("| %-12s| %-12s| %-12s| %-12s| %-12s|\n", "Ekonomi", "50000", "2%", "Tidak Ada", "Tidak Ada");
+                    System.out.printf("| %-12s| %-12s| %-12s| %-12s| %-12s|\n", "Bisnis", "100000", "5%", "Ada", "Tidak Ada");
+                    System.out.printf("| %-12s| %-12s| %-12s| %-12s| %-12s|\n", "Eksekutif", "200000", "7%", "Ada", "Tidak Ada");
+                    System.out.printf("| %-12s| %-12s| %-12s| %-12s| %-12s|\n", "Pariwisata", "300000", "10%", "Ada", "Ada");
+                    System.out.println("-----------------------------------------------------------------------");
+                    break;
                 }
                 case 2 -> {
-                    System.out.println("Kereta yang ada AC:");
-                    for (int i = 1; i < jadwal.length; i++) {
-                        if (jadwal[i][3].equals("Ada")) {
-                            for (String cell : jadwal[i]) {
-                                System.out.print(cell + "\t");
-                            }
-                            System.out.println();
-                        }
-                    }
+                    System.out.println("-----------------------------------------------------------------------");
+                    System.out.printf("| %-12s| %-12s| %-12s| %-12s| %-12s|\n", "Jenis", "Harga", "Diskon", "AC", "Colokan");
+                    System.out.println("-----------------------------------------------------------------------");
+                    System.out.printf("| %-12s| %-12s| %-12s| %-12s| %-12s|\n", "Bisnis", "100000", "5%", "Ada", "Tidak Ada");
+                    System.out.printf("| %-12s| %-12s| %-12s| %-12s| %-12s|\n", "Eksekutif", "200000", "7%", "Ada", "Tidak Ada");
+                    System.out.printf("| %-12s| %-12s| %-12s| %-12s| %-12s|\n", "Pariwisata", "300000", "10%", "Ada", "Ada");
+                    System.out.println("-----------------------------------------------------------------------");
+                    break;
                 }
                 case 3 -> {
-                    System.out.println("Kereta yang ada Colokan:");
-                    for (int i = 1; i < jadwal.length; i++) {
-                        if (jadwal[i][4].equals("Ada")) {
-                            for (String cell : jadwal[i]) {
-                                System.out.print(cell + "\t");
-                            }
-                            System.out.println();
-                        }
-                    }
+                    System.out.println("-----------------------------------------------------------------------");
+                    System.out.printf("| %-12s| %-12s| %-12s| %-12s| %-12s|\n", "Jenis", "Harga", "Diskon", "AC", "Colokan");
+                    System.out.println("-----------------------------------------------------------------------");
+                    System.out.printf("| %-12s| %-12s| %-12s| %-12s| %-12s|\n", "Pariwisata", "300000", "10%", "Ada", "Ada");
+                    System.out.println("-----------------------------------------------------------------------");
+                    break;
                 }
                 case 4 -> {
                     while (true) {
                         System.out.print("Jenis (ketik '-' untuk selesai): ");
                         String jenis = sc.next();
                         if (jenis.equals("-")) break;
+                        
+                        if(jenis.equalsIgnoreCase("ekonomi")){
+                            harga[banyak] = 50000 * 98 / 100;
+                        }else if(jenis.equalsIgnoreCase("bisnis")){
+                            harga[banyak] = 100000 * 95 / 100;
+                        }else if(jenis.equalsIgnoreCase("pariwisata")){
+                            harga[banyak] = 200000 * 93 / 100;
+                        }else if(jenis.equalsIgnoreCase("pariwisata")){
+                            harga[banyak] = 300000 * 90 / 100;
+                        }
 
                         System.out.print("Jumlah: ");
                         int jumlah = sc.nextInt();
                         
-                        orderr[std] = jenis;
-                        qty[std] = jumlah;
-                        std++;
+                        jenisPesanan[banyak] = jenis;
+                        jlm[banyak] = jumlah;
+                        banyak++;
                     }
                 }
                 case 5 -> {
                     System.out.println("List Pesanan:");
-                    for (int i = 0; i < std; i++) {
-                        System.out.println(orderr[i] + "\t" + qty[i]);
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.printf("| %-20s| %-16s| %-24s|\n", "Jenis Kereta", "Jumlah Tiket", "Harga Total");
+                    System.out.println("-------------------------------------------------------------------");
+                    for (int i = 0; i < banyak; i++) {
+                        System.out.printf("| %-20s| %-16s| Rp. %-20s|\n", jenisPesanan[i], jlm[i], (harga[i] * jlm[i]));
                     }
+                    System.out.println("-------------------------------------------------------------------");
                 }
                 case 0 -> System.out.println("Anda memilih untuk keluar.");
                 default -> System.out.println("Pilihan tidak valid. Silakan coba lagi.");
